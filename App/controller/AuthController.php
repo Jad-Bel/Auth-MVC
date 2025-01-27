@@ -37,8 +37,7 @@ class AuthController {
         }
 
         if ($password !== $confirm_password) {
-            echo "Error: Password do not match";
-            return;
+            $this->redirectWithError('Passwords do not match');
         }
 
         if ($this->user->register($username, $email, $password)) {
@@ -53,17 +52,21 @@ class AuthController {
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
         
+        if (empty($email) || empty($password)) {
+            $this->redirectWithError('Email and password are required');
+        }
+
         $user = $this->user->login($email, $password);
+
 
         if ($user) {
             session_start();
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $this->redirectWithSuccess('Login successful', '/../../index.php');
-
             exit;
         } else {
-            echo 'Invalid email or password';
+            $this->redirectWithError('Invalid email or password');
         }
     }
 
@@ -79,7 +82,7 @@ class AuthController {
 
     private function redirect($page = '') {
         if (empty($page)) {
-            $page = $_SERVER['HTTP_REFERER'] ?? 'index.php';
+            $page = $_SERVER['HTTP_REFERER'] ?? '../../index.php';
         }
         header("Location: $page");
         exit();

@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 <body>
     <div class="container">
         <h2>Register</h2>
-        <form id="registerForm" action="/index.php" method="post">
+        <form id="registerForm" action="../../index.php" method="post">
             <input type="hidden" name="action" value="register">
             <div class="form-group">
                 <label for="username">Username:</label>

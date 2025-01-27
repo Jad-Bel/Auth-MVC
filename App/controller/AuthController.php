@@ -39,6 +39,8 @@ class AuthController {
 
         if ($this->user->register($username, $email, $password)) {
             echo 'Registration successful';
+            header('Location: ../AuthMVC/App/views/login.php');
+            exit;
         } else {
             echo 'Registration failed';
         }
@@ -56,6 +58,8 @@ class AuthController {
             $_SESSION['username'] = $user['username'];
 
             echo 'Login successful';
+            header('Location: /../../index.php');
+            exit;
         } else {
             echo 'Invalid email or password';
         }

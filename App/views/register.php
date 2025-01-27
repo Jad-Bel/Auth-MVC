@@ -20,6 +20,8 @@
             echo '<p class="success">' . $_SESSION['success'] . '</p>';
             unset($_SESSION['success']);
         }
+
+        print_r($_POST);
         ?>
         <form id="registerForm" action="../../index.php" method="post">
             <input type="hidden" name="action" value="register">

@@ -18,15 +18,15 @@ class User {
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":username", $username);
         $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":password", $password);
+        $stmt->bindParam(":password", $hashedPassword);
 
         return $stmt->execute();
     }
 
     public function login($email, $password) {
-        $query = "SELECT id, username, password FROM users WHERE email = ?";
+        $query = "SELECT id, username, password FROM users WHERE email = :email";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindparam("s", $email);
+        $stmt->bindparam(":email", $email);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 

@@ -68,4 +68,16 @@ body {
     text-decoration: underline;
   }
   
+  .error {
+    color: #dc3545;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .success {
+    color: #28a745;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
   

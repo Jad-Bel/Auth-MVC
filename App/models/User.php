@@ -23,5 +23,19 @@ class User {
         return $stmt->execute();
     }
 
-    
+    public function login($email, $password) {
+        $query = "SELECT id, username, password FROM users WHERE email = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindparam("s", $email);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result->num_rows === 1) {
+            $user = $result;
+            if (password_verify($password, $user['password'])) {
+                return $user;
+            }
+        }
+        return false;
+    }
 }

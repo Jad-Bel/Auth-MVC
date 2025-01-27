@@ -63,8 +63,7 @@ class AuthController {
             session_start();
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
-            $this->redirectWithSuccess('Login successful', '/../../index.php');
-            exit;
+            $this->redirectWithSuccess('Login successful', '../AuthMVC/index.php');
         } else {
             $this->redirectWithError('Invalid email or password');
         }
@@ -82,7 +81,7 @@ class AuthController {
 
     private function redirect($page = '') {
         if (empty($page)) {
-            $page = $_SERVER['HTTP_REFERER'] ?? '../../index.php';
+            $page = '';
         }
         header("Location: $page");
         exit();

@@ -30,12 +30,16 @@ class User {
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($result->num_rows === 1) {
+        if ($result) {
             $user = $result;
             if (password_verify($password, $user['password'])) {
-                return $user;
+                return [
+                    'id' => $result['id'],
+                    'username' => $result['username']
+                ];    
             }
+        } else {
+            return false;
         }
-        return false;
     }
 }

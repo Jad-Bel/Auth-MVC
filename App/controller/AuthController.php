@@ -45,4 +45,21 @@ class AuthController {
             echo 'Registration failed';
         }
     }
+
+    private function handleLogin () {
+        $email = $_POST['email'] ?? '';
+        $password = $_POST['password'] ?? '';
+        
+        $user = $this->user->login($email, $password);
+
+        if ($user) {
+            session_start();
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+
+            echo 'Login successful';
+        } else {
+            echo 'Invalid email or password';
+        }
+    }
 }

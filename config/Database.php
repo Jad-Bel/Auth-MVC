@@ -2,9 +2,9 @@
 
 class Database {
     private $host = 'localhost';
-    private $un = 'root';
-    private $pw = 'Hitler20.';
-    private $db = 'Auth';
+    private $un = 'your_username';
+    private $pw = 'your_password';
+    private $db = 'your_database';
     private $conn;
 
     public function getConnection()

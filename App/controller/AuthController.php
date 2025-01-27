@@ -21,7 +21,7 @@ class AuthController {
                     $this->handleLogin();
                     break;
                 default:
-                    echo 'Error: Invalid Action';
+                $this->redirectWithError('Invalid action');
             }
         }
     }
@@ -31,6 +31,10 @@ class AuthController {
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
         $confirm_password = $_POST['confirm_password'] ?? '';
+
+        if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
+            $this->redirectWithError('All fields are required');
+        }
 
         if ($password !== $confirm_password) {
             echo "Error: Password do not match";
@@ -56,12 +60,29 @@ class AuthController {
             session_start();
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
+            $this->redirectWithSuccess('Login successful', '/../../index.php');
 
-            echo 'Login successful';
-            header('Location: /../../index.php');
             exit;
         } else {
             echo 'Invalid email or password';
         }
+    }
+
+    private function redirectWithError($message, $page = '') {
+        $_SESSION['error'] = $message;
+        $this->redirect($page);
+    }
+
+    private function redirectWithSuccess($message, $page = '') {
+        $_SESSION['success'] = $message;
+        $this->redirect($page);
+    }
+
+    private function redirect($page = '') {
+        if (empty($page)) {
+            $page = $_SERVER['HTTP_REFERER'] ?? 'index.php';
+        }
+        header("Location: $page");
+        exit();
     }
 }

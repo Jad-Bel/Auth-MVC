@@ -27,4 +27,22 @@ class AuthController {
             }
         }
     }
+
+    private function handleRegister () {
+        $username = $_POST['username'] ?? '';
+        $email = $_POST['email'] ?? '';
+        $password = $_POST['password'] ?? '';
+        $confirm_password = $_POST['confirm_password'] ?? '';
+
+        if ($password !== $confirm_password) {
+            echo "Error: Password do not match";
+            return;
+        }
+
+        if ($this->user->register($username, $email, $password)) {
+            echo 'Registration successful';
+        } else {
+            echo 'Registration failed';
+        }
+    }
 }

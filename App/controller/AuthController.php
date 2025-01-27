@@ -1,7 +1,5 @@
 <?php
 
-use Couchbase\User;
-
 require_once  __DIR__ . '/../models/User.php';
 
 class AuthController {
@@ -13,7 +11,7 @@ class AuthController {
 
     public function handleRequest () {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $action = $_POST["action"] ? '';
+            $action = isset($_POST["action"]) ? $_POST["action"] : '';
 
             switch ($action) {
                 case 'register':

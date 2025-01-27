@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="../../public/css/style.css">
 </head>
+
 <body>
     <div class="container">
         <h2>Register</h2>
+        <?php
+        if (isset($_SESSION['error'])) {
+            echo '<p class="error">' . $_SESSION['error'] . '</p>';
+            unset($_SESSION['error']);
+        }
+        if (isset($_SESSION['success'])) {
+            echo '<p class="success">' . $_SESSION['success'] . '</p>';
+            unset($_SESSION['success']);
+        }
+        ?>
         <form id="registerForm" action="../../index.php" method="post">
             <input type="hidden" name="action" value="register">
             <div class="form-group">
@@ -32,4 +44,5 @@
         <p>Already have an account? <a href="login.php">Login here</a></p>
     </div>
 </body>
+
 </html>

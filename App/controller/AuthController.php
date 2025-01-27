@@ -42,9 +42,8 @@ class AuthController {
         }
 
         if ($this->user->register($username, $email, $password)) {
-            echo 'Registration successful';
-            header('Location: ../AuthMVC/App/views/login.php');
-            exit;
+            $this->redirectWithSuccess('Registration successful', '../AuthMVC/App/views/login.php');
+
         } else {
             echo 'Registration failed';
         }

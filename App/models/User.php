@@ -11,16 +11,10 @@ class User {
     protected $created_at;
     protected $conn;
 
-    public function __construct($id, $username, $email, $password = null, $role = null, $status = null)
+    public function __construct()
     {
         $db = new database();
         $this->conn = $db->getConnection();
-        $this->id = $id;
-        $this->username = $username;
-        $this->email = $email;
-        $this->password = $password ? $this->hashPassword($password) : null;
-        $this->role = $role;
-        $this->created_at = date('Y-m-d H:i:s');
     }
 
     public function getId()
@@ -52,6 +46,11 @@ class User {
     public function getCreatedAt()
     {
         return $this->created_at;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     public function setUsername($username)

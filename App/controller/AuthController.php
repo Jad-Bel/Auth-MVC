@@ -3,6 +3,7 @@
 require_once  __DIR__ . '/../models/User.php';
 
 class AuthController {
+    
     private $user;
 
     public function __construct() {
@@ -40,7 +41,7 @@ class AuthController {
             $this->redirectWithError('Passwords do not match');
         }
 
-        if ($this->user->register($username, $email, $password)) {
+        if ($this->user->save()) {
             $this->redirectWithSuccess('Registration successful', '../AuthMVC/App/views/login.php');
 
         } else {
@@ -56,15 +57,20 @@ class AuthController {
             $this->redirectWithError('Email and password are required');
         }
 
-        $user = $this->user->login($email, $password);
+        $user = $this->user->getByEmail($email, $password);
 
 
-        if ($user) {
+        if ($user && $user['role'] == 'user') {
             session_start();
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
-            $this->redirectWithSuccess('Login successful', '../AuthMVC/index.php');
-        } else {
+            $this->redirectWithSuccess('Login successful', '../AuthMVC/index.php?=home');
+        } elseif ($user && $user['role'] == 'admin') {
+            session_start();
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $this->redirectWithSuccess('Login successful', '../AuthMVC/index.php?=adminDash');
+        }   else {
             $this->redirectWithError('Invalid email or password');
         }
     }

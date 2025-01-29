@@ -8,6 +8,6 @@
 <body>
     <h1>Home Page</h1>
 
-    <a href="logout.php">Logout</a>
+    <a href="../AuthMVC/App/views/logout.php">Logout</a>
 </body>
 </html>

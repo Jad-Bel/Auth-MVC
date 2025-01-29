@@ -65,7 +65,7 @@ class AuthController {
         if (empty($email) || empty($password)) {
             $this->redirectWithError('Email and password are required');
         }
-    
+        
         $user = $this->user->getByEmail($email, $password);
     
         if ($user) {

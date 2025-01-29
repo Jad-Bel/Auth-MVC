@@ -2,7 +2,7 @@
 
 namespace AuthMVC\App\models\User;
 
-require_once '../AuthMVC/config/Database.php';
+require_once __DIR__ . '../../../../config/Database.php';
 use AuthMVC\config\Database\Database;
 
 class User {
@@ -107,26 +107,24 @@ class User {
         return true;
     }
 
-    public function getByEmail($email, $password) {
-        $query = "SELECT id, username, password, role FROM users WHERE email = :email";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":email", $email);
-        $stmt->execute();
-        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-    
-        if ($result) {
-            if (password_verify($password, $result['password'])) {
-                $user = new User();
-                $user->setId($result['id']);
-                $user->setUsername($result['username']);
-                $user->setEmail($email);
-                $user->setPassword($result['password']); 
-                $user->setRole($result['role']);
-                return $user;
-            }
-        }
-        return false; 
+    public function getByEmail($email) {
+    $query = "SELECT id, username, password, role FROM users WHERE email = :email";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(":email", $email);
+    $stmt->execute();
+    $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+    if ($result) {
+        $user = new User();
+        $user->setId($result['id']);
+        $user->setUsername($result['username']);
+        $user->setEmail($email);
+        $user->setPassword($result['password']);
+        $user->setRole($result['role']);
+        return $user;
     }
+    return false;
+}
 
     protected function hashPassword($password)
     {

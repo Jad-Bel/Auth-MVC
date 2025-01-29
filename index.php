@@ -6,16 +6,21 @@ require_once __DIR__ . '/App/controller/AuthController.php';
 
 session_start();
 print_r($_SESSION);
+echo '<br>';
 
 use AuthMVC\App\controller\AuthController\AuthController;
 
 $authController = new AuthController();
 $authController->handleRequest();
 
-if ($_SESSION['role'] == 'admin') {
-    require_once __DIR__ . '/App/views/dash.php';
-} elseif ($_SESSION['role'] == 'user') {    
-    require_once __DIR__ . '/App/views/home.php';
+if (isset($_SESSION['role'])) {
+    if ($_SESSION['role'] == 'admin') {
+        require_once __DIR__ . '/App/views/dash.php';
+    } elseif ($_SESSION['role'] == 'user') {
+        require_once __DIR__ . '/App/views/home.php';
+    } else {
+        echo "Unknown role";
+    }
 }
 
 // var_dump($_POST);

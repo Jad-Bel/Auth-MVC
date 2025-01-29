@@ -1,6 +1,6 @@
 <?php 
 
-require_once '../AuthMVC/App/models/User/User.php';
+require_once '../models/User/User.php';
 
 use AuthMVC\App\models\User\User;
 

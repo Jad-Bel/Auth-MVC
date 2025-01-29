@@ -8,15 +8,15 @@ use AuthMVC\App\controller\AuthController\AuthController;
 
 
 session_start();
-// print_r($_SESSION);
+print_r($_SESSION);
 $authController = new AuthController();
 $authController->handleRequest();
 
-if (isset($_SESSION['username'])) {
-   echo "Welcome " . $_SESSION['username'];
-} else {
-   echo "Not logged in";
-}
+// if (isset($_SESSION['username'])) {
+//    echo "Welcome " . $_SESSION['username'];
+// } else {
+//    echo "Not logged in";
+// }
 
 // print_r($_POST);
 // print_r(1);

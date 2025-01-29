@@ -61,21 +61,23 @@ class AuthController {
         if (empty($email) || empty($password)) {
             $this->redirectWithError('Email and password are required');
         }
-
+    
         $user = $this->user->getByEmail($email, $password);
-
-
-        if ($user && $user['role'] == 'user') {
+    
+        if ($user) {
             session_start();
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            $this->redirectWithSuccess('Login successful', '../AuthMVC/index.php?=home');
-        } elseif ($user && $user['role'] == 'admin') {
-            session_start();
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            $this->redirectWithSuccess('Login successful', '../AuthMVC/index.php?=adminDash');
-        }   else {
+            $_SESSION['user_id'] = $user->getId();
+            $_SESSION['username'] = $user->getUsername();
+            $_SESSION['role'] = $user->getRole();
+    
+            if ($user->getRole() == 'user') {
+                $this->redirectWithSuccess('Login successful', '../AuthMVC/index.php?=home');
+            } elseif ($user->getRole() == 'admin') {
+                $this->redirectWithSuccess('Login successful', '../AuthMVC/index.php?=adminDash');
+            } else {
+                $this->redirectWithError('Invalid role');
+            }
+        } else {
             $this->redirectWithError('Invalid email or password');
         }
     }

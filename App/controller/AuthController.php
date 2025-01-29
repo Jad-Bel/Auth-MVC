@@ -42,7 +42,7 @@ class AuthController {
         }
 
         if ($this->user->save()) {
-            $this->redirectWithSuccess('Registration successful', '../AuthMVC/App/views/login.php');
+            $this->redirectWithSuccess('Registration successful', '/../AuthMVC/App/views/login.php');
 
         } else {
             echo 'Registration failed';
@@ -86,10 +86,12 @@ class AuthController {
     }
 
     private function redirect($page = '') {
+        $baseUrl = '/AuthMVC/';
+
         if (empty($page)) {
-            $page = '';
+            $page = 'index.php';
         }
-        header("Location: $page");
+        header("Location: " . $baseUrl . ltrim($page, '/'));
         exit();
     }
 }

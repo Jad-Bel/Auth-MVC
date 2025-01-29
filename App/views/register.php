@@ -23,7 +23,7 @@
 
         print_r($_POST);
         ?>
-        <form id="registerForm" action="../../index.php" method="post">
+        <form id="registerForm" action="/AuthMVC/index.php" method="post">
             <input type="hidden" name="action" value="register">
             <div class="form-group">
                 <label for="username">Username:</label>

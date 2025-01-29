@@ -21,7 +21,7 @@
             unset($_SESSION['success']);
         }
         ?>
-        <form id="loginForm" action="../../index.php" method="POST">
+        <form id="loginForm" action="/AuthMVC/index.php" method="POST">
             <input type="hidden" name="action" value="login">
             <div class="form-group">
                 <label for="email">Email:</label>

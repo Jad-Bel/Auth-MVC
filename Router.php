@@ -2,10 +2,9 @@
 
 if (isset($_GET['page'])){
     $page = $_GET['page'] ?? 'index';
-
     switch ($page) {
         case '/':
-            require __DIR__ . '/index.php';
+            require __DIR__ . '/../AuthMVC/index.php';
             break;
         default:
             $filename = __DIR__ . '/App/views/' . basename($page) . '.php';
@@ -13,9 +12,11 @@ if (isset($_GET['page'])){
                 require $filename;
                 break;
             }
-
+            
+        }
+        // echo $page;
+        // exit();
     }
-}
 
 //
 //class Router {

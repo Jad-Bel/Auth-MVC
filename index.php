@@ -1,6 +1,23 @@
 <?php
 //declare(strict_types=1);
 
+require __DIR__ . '/Router.php';
+require_once __DIR__ . '/App/controller/AuthController.php';
+
+
+session_start();
+print_r($_SESSION);
+$authController = new AuthController();
+$authController->handleRequest();
+
+if (isset($_SESSION['username'])) {
+   echo "Welcome " . $_SESSION['username'];
+} else {
+   echo "Not logged in";
+}
+
+// print_r($_POST);
+// print_r(1);
 
 
 //require __DIR__ . '/App/views/register.php';
@@ -63,14 +80,3 @@
 //        header("Location: /AuthMVC/index.php");
 //}
 
-//require_once __DIR__ . '/App/controller/AuthController.php';
-//session_start();
-//
-//$authController = new AuthController();
-//$authController->handleRequest();
-//
-//if (isset($_SESSION['username'])) {
-//    echo "Welcome " . $_SESSION['username'];
-//} else {
-//    echo "Not logged in";
-//}

@@ -137,4 +137,12 @@ class User {
     {
         return password_verify($password, $hashedPassword);
     }
+
+    public function logout() {
+        session_start();
+        session_unset();
+        session_destroy();
+        header('Location: /AuthMVC/App/Views/login.php');
+        exit();
+    }
 }

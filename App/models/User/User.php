@@ -1,6 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../../config/Database.php';
+
+namespace AuthMVC\App\models\User;
+use AuthMVC\config\Database\Database;
 
 class User {
     protected $id;
@@ -109,7 +111,7 @@ class User {
         $stmt = $this->conn->prepare($query);
         $stmt->bindparam(":email", $email);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if ($result) {
             $user = $result;

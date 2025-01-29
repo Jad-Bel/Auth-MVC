@@ -1,5 +1,8 @@
 <?php
 
+namespace AuthMVC\App\models\Admin;
+use AuthMVC\config\Database\Database;
+
 class Admin
 {
     private $id;
@@ -70,7 +73,7 @@ class Admin
         $stmt = $this->conn->prepare($query);
         $stmt->bindparam(":email", $email);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if ($result) {
             $user = $result;

@@ -1,6 +1,9 @@
 <?php
 
-require_once  __DIR__ . '/../models/User.php';
+
+use AuthMVC\App\models\User\User;
+// use AuthMVC\App\models\Admin\Admin;
+
 
 class AuthController {
     

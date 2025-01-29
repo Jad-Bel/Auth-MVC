@@ -6,12 +6,13 @@ require_once __DIR__ . '/App/controller/AuthController.php';
 
 use AuthMVC\App\controller\AuthController\AuthController;
 
+// var_dump($_POST);
+// die();
 
 session_start();
 print_r($_SESSION);
 $authController = new AuthController();
 $authController->handleRequest();
-
 // if (isset($_SESSION['username'])) {
 //    echo "Welcome " . $_SESSION['username'];
 // } else {

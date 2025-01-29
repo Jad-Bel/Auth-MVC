@@ -46,6 +46,10 @@ class AuthController {
             $this->redirectWithError('Passwords do not match');
         }
 
+        $this->user->Setusername($username);
+        $this->user->SetEmail($email);
+        $this->user->SetPassword(password_hash($password, PASSWORD_DEFAULT));
+
         if ($this->user->save()) {
             $this->redirectWithSuccess('Registration successful', '/../AuthMVC/App/views/login.php');
 

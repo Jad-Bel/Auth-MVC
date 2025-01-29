@@ -4,9 +4,11 @@
 require __DIR__ . '/Router.php';
 require_once __DIR__ . '/App/controller/AuthController.php';
 
+use AuthMVC\App\controller\AuthController\AuthController;
+
 
 session_start();
-print_r($_SESSION);
+// print_r($_SESSION);
 $authController = new AuthController();
 $authController->handleRequest();
 

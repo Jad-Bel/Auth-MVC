@@ -1,6 +1,7 @@
 <?php
 
 namespace AuthMVC\App\models\Admin;
+
 use AuthMVC\config\Database\Database;
 
 class Admin

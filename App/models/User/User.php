@@ -1,7 +1,8 @@
 <?php
 
-
 namespace AuthMVC\App\models\User;
+
+require_once '../AuthMVC/config/Database.php';
 use AuthMVC\config\Database\Database;
 
 class User {

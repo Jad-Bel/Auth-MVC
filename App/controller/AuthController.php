@@ -1,8 +1,10 @@
 <?php
 
+namespace AuthMVC\App\controller\AuthController;
+
+require_once '../AuthMVC/App/models/User/User.php';
 
 use AuthMVC\App\models\User\User;
-// use AuthMVC\App\models\Admin\Admin;
 
 
 class AuthController {

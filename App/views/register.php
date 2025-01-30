@@ -46,7 +46,7 @@
         <p>Already have an account? <a href="/AuthMVC/index.php?page=login">Login here</a></p>
     </div>
 </body>
-<script src="../AuthMVC/public/js/Auth.js"></script>
+<script src="../AuthMVC/public/js/register.js"></script>
 
 
 </html>

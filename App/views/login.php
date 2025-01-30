@@ -36,6 +36,6 @@
         </form>
         <p>Don't have an account? <a href="/AuthMVC/index.php?page=register">Register here</a></p>
     </div>
-    <script src="../AuthMVC/public/js/Auth.js"></script>
+    <script src="../AuthMVC/public/js/login.js"></script>
 </body>
 </html>

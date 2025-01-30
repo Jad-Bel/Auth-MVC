@@ -140,7 +140,7 @@ class User {
         session_start();
         session_unset();
         session_destroy();
-        header('Location: /AuthMVC/App/Views/login.php');
+        header('Location: /AuthMVC/index.php?page=login');
         exit();
     }
 }

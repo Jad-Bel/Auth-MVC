@@ -5,8 +5,8 @@ require __DIR__ . '/Router.php';
 require_once __DIR__ . '/App/controller/AuthController.php';
 
 session_start();
-print_r($_SESSION);
-echo '<br>';
+// print_r($_SESSION);
+// echo '<br>';
 
 use AuthMVC\App\controller\AuthController\AuthController;
 

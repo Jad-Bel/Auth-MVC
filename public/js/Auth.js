@@ -1,9 +1,8 @@
+console.log(1)
 
 const form = document.querySelector('form');
 
-form.addEventListener('submit', e => { 
-    let isValid = true;
-    
+form.addEventListener('submit', e => {         
     const userNameInput = document.getElementById('username').value.trim();
     const emailInput = document.getElementById('email').value.trim();
     const passwordInput = document.getElementById('password').value.trim();
@@ -18,7 +17,7 @@ form.addEventListener('submit', e => {
         Swal.fire({
             title: "Error!",
             text: "Please fill all required fields",
-            icon: "Error"
+            icon: "error"
         });
         return;
     }

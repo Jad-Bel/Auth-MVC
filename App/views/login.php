@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="public/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
@@ -35,6 +36,6 @@
         </form>
         <p>Don't have an account? <a href="/AuthMVC/index.php?page=register">Register here</a></p>
     </div>
+    <script src="../AuthMVC/public/js/Auth.js"></script>
 </body>
-
 </html>

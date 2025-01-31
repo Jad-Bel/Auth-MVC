@@ -5,7 +5,7 @@ namespace AuthMVC\App\controller\AuthController;
 require_once '../AuthMVC/App/models/User/User.php';
 
 use AuthMVC\App\models\User\User;
-
+use CsrfToken;
 
 class AuthController {
     
@@ -58,7 +58,24 @@ class AuthController {
         }
     }
 
+    public function showLoginForm()
+    {
+        if (!CsrfToken::get()) {
+            CsrfToken::store(CsrfToken::generate());
+        }
+
+        require '../AuthMVC/index.php?=login';
+    }
+
     private function handleLogin () {
+        $submittedToken = $_POST['csrf_token'] ?? '';
+
+        if (!CsrfToken::validate($submittedToken)) {
+            die("CSRF token validation failed.");
+        }
+
+        CsrfToken::regenerate();
+
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
         

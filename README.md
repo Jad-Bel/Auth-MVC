@@ -122,7 +122,7 @@ Visit the project in your browser: `http://localhost/AuthMVC`.
 - Implement password reset functionality.
 - Include email validation and password strength checks.
 - Add role-based access control with more granular permissions.
-- Implement token-based authentication (e.g., JWT for API integration).
+- Implement token-based authentication.
 - Improve session security by regenerating session IDs and adding expiration policies.
 - Add two-factor authentication (2FA) for increased security.
 - Develop a user management panel for admins to edit roles and permissions.
